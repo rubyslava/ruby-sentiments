@@ -1,0 +1,2 @@
+require './rails'
+require './test'
