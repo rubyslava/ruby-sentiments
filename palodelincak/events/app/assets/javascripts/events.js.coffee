@@ -9,6 +9,7 @@ $(document).on "ready page:load", ->
 
   signUpEvent = (id) ->
     $("#event_#{id}").addClass("signed-up")
+    $("#event_#{id}").find(".event-sign-up").removeClass("btn-primary").addClass("btn-success").attr("disabled", "disabled").text("Successfully signed up!")
 
   markSignedUpEvents = (events) ->
     for event in events then do (event) =>
