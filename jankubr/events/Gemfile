@@ -29,6 +29,16 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
 
+group :test, :development do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'ffaker'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'factory_girl_rails'
+  gem 'timecop'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

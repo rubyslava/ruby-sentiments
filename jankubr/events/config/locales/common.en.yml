@@ -4,6 +4,9 @@ en:
     or: or
     save: Save
     cancel: Cancel
+    object: Object
+    could_not_be_saved: could not be saved
+    actions: Actions
   date:
     formats:
       default: "%d/%m/%Y"

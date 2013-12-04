@@ -21,5 +21,7 @@ module Events
     # config.i18n.default_locale = :de
 
     config.autoload_paths += Dir["#{config.root}/app/policies/"]
+
+    I18n.enforce_available_locales = true
   end
 end

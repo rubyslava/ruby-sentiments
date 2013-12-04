@@ -19,6 +19,10 @@
       <td>
         <% if event.user == current_user %>
           <%= link_to t('events.edit'), edit_event_path(event) %>
+          <br>
+          <%= link_to(t('events.delete'), event_path(event),
+                      method: :delete,
+                      data: {confirm: t('events.delete_confirmation')}) %>
         <% end %>
       </td>
     </tr>

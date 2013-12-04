@@ -10,11 +10,11 @@ protected
   end
 
   def check_rights
-    raise PermissionDenied
+    raise PermissionDenied unless devise_controller?
   end
 
   rescue_from 'PermissionDenied' do |exception|
-    render file: 'public/403', format: [:html], status: 403, layout: false
+    render file: 'public/404', format: [:html], status: 404, layout: false
   end
 end
 
