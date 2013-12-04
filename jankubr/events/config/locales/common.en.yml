@@ -1,0 +1,12 @@
+en:
+  common:
+    logout: Logout
+    or: or
+    save: Save
+    cancel: Cancel
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%H:%M"

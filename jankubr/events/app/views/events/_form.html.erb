@@ -1,0 +1,35 @@
+<%= form_for @event do |f| %>
+  <%= error_messages @event %>
+  <div>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :date %>
+      <%= f.date_field :date %>
+    </p>
+
+    <p>
+      <%= f.label :starts_at %>
+      <%= f.time_field :starts_at %>
+    </p>
+
+    <p>
+      <%= f.label :ends_at %>
+      <%= f.time_field :ends_at %>
+    </p>
+
+    <p>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </p>
+  </div>
+  <div id="save_cancel">
+    <%= f.submit t('common.save') %>
+
+    <%= t('common.or') %>
+    <%= link_to t('common.cancel'), events_path %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+en:
+  events:
+    saved: The event was saved
+    updated: The event was updated
+    deleted: The event was deleted
+    new: Add a new event
+    actions: Actions
+    edit: Update event
+  activerecord:
+    attributes:
+      event:
+        name: Name
+        description: Description
+        date: Date
+        starts_at: Starts at
+        ends_at: Ends at

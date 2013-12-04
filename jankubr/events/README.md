@@ -1,4 +1,5 @@
 Events for Ruby sentiments
 ==========================
 
-tdb
+policy
+view inheritance

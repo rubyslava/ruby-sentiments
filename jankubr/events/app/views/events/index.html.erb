@@ -1,1 +1,26 @@
-events
+<p><%= link_to t('events.new'), new_event_path %></p>
+
+<table>
+  <tr>
+    <th><%= t('activerecord.attributes.event.name')%></th>
+    <th><%= t('activerecord.attributes.event.date')%></th>
+    <th><%= t('activerecord.attributes.event.starts_at')%></th>
+    <th><%= t('activerecord.attributes.event.ends_at')%></th>
+    <th><%= t('activerecord.attributes.event.description')%></th>
+    <th><%= t('common.actions')%></th>
+  </tr>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.name %></td>
+      <td><%= I18n.l(event.date) %></td>
+      <td><%= I18n.l(event.starts_at) %></td>
+      <td><%= I18n.l(event.ends_at) %></td>
+      <td><%= event.description %></td>
+      <td>
+        <% if event.user == current_user %>
+          <%= link_to t('events.edit'), edit_event_path(event) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
