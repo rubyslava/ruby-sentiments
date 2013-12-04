@@ -1,0 +1,84 @@
+@import 'bourbon';
+@import 'neat';
+@import 'bitters';
+
+header {
+  @include outer-container;
+  background-color: #ddd;
+
+  h1 {
+    @include span-columns(12);
+    @include pad(1em);
+  }
+}
+
+#main-content {
+
+  div.meeting {
+    @include outer-container;
+
+    background-color: #eee;
+    margin-top: 1em;
+
+    a.signup {
+      @include span-columns(2);
+      @include pad(2em 0 2em 0.5em);
+      @include omega;
+
+      background-color: #ddd;
+      font-size:  2em;
+      height: 100%;
+    }
+
+    div.head {
+      @include span-columns(10);
+      @include omega;
+
+      h2 {
+        @include span-columns(6 of 10);
+        @include pad(1em);
+      }
+
+      div.times {
+        @include span-columns(4 of 10);
+        @include pad(2em 1em);
+
+        div.start {
+          @include span-columns(2 of 4);
+
+          &:before {
+            content: "od: ";
+          }
+        }
+
+        div.finish {
+          @include span-columns(2 of 4);
+
+          &:before {
+            content: "do: ";
+          }
+        }
+      }
+    }
+
+    h4.summary {
+      @include span-columns(10);
+      @include omega;
+      @include pad(0.5em 2em)
+    }
+
+    p.description {
+      @include span-columns(10);
+      @include omega;
+      @include pad(2em)
+    }
+
+  }
+}
+
+footer {
+  @include outer-container;
+  @include pad(1em);
+
+  background-color: #ddd;
+}
