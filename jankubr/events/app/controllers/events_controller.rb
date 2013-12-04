@@ -36,6 +36,15 @@ class EventsController < ApplicationController
     redirect_to(events_path)
   end
 
+  def join
+    if JoinEvent.new(@event).join(current_user)
+      flash[:notice] = t('events.joined')
+    else
+      flash[:notice] = t('events.could_not_join')
+    end
+    redirect_to(events_path)
+  end
+
 private
 
   def check_rights

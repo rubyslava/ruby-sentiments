@@ -1,6 +1,6 @@
 <p><%= link_to t('events.new'), new_event_path %></p>
 
-<table>
+<table cellspacing="0">
   <tr>
     <th><%= t('activerecord.attributes.event.name')%></th>
     <th><%= t('activerecord.attributes.event.date')%></th>
@@ -10,13 +10,14 @@
     <th><%= t('common.actions')%></th>
   </tr>
   <% @events.each do |event| %>
-    <tr>
+    <tr <%= attending_class(event) %>>
       <td><%= event.name %></td>
       <td><%= I18n.l(event.date) %></td>
       <td><%= I18n.l(event.starts_at) %></td>
       <td><%= I18n.l(event.ends_at) %></td>
       <td><%= event.description %></td>
       <td>
+        <%= render 'join_form', event: event %>
         <% if event.user == current_user %>
           <%= link_to t('events.edit'), edit_event_path(event) %>
           <br>

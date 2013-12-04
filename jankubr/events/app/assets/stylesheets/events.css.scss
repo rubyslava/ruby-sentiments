@@ -1,3 +1,5 @@
+@import 'colors.css.scss';
+
 label {
   display: inline-block;
   width: 100px;
@@ -13,5 +15,8 @@ table {
   width: 100%;
   th {
     text-align: left;
+  }
+  tr.attending_event td {
+    background-color: $light_grey;
   }
 }

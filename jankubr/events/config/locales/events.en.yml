@@ -7,6 +7,10 @@ en:
     edit: Update event
     delete: Delete event
     delete_confirmation: Delete this event?
+    join: I will attend this event
+    joined: You joined the event
+    could_not_join: Could not join the event
+    attending_this_event: You are attending this event
   activerecord:
     attributes:
       event:

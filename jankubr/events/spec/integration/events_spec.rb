@@ -39,11 +39,21 @@ describe 'Events' do
     page.should_not have_content('Update event')
     visit "/events/#{event.id}/edit"
     page.should_not have_content('Name')
-    page.should have_content("The page you were looking for doesn't exist")
+    page.should have_content("The page cannot be accessed")
     visit events_path
 
     login_as(user)
     click_link('Delete event')
     Event.count.should == 0
+  end
+
+  it "allows user to join an event" do
+    user = FactoryGirl.create(:user)
+    event = FactoryGirl.create(:event)
+    login_as(user)
+    click_button('I will attend this event')
+
+    page.should have_content('You are attending this event')
+    event.reload.user_attending?(user).should == true
   end
 end

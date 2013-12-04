@@ -1,0 +1,7 @@
+<% if event.user_attending?(current_user) %>
+  <%= t('events.attending_this_event') %><br>
+<% else %>
+  <%= form_for event, url: join_event_path(event), method: :patch do %>
+    <%= submit_tag t('events.join') %>
+  <% end %>
+<% end %>

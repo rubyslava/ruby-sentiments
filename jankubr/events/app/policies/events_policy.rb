@@ -1,6 +1,6 @@
 class EventsPolicy < Policy
   def allowed_current_action?()
-    if in_action?(:index, :new, :create)
+    if in_action?(:index, :new, :create, :join)
       true
     elsif in_action?(:edit, :update, :destroy)
       record.user == user

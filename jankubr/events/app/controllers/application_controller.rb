@@ -14,7 +14,7 @@ protected
   end
 
   rescue_from 'PermissionDenied' do |exception|
-    render file: 'public/404', format: [:html], status: 404, layout: false
+    render file: 'public/403', format: [:html], status: 403, layout: false
   end
 end
 
