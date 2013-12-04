@@ -1,0 +1,6 @@
+<% if current_user %>
+  <div id="user_box">
+    <%= current_user.name %>&nbsp;|&nbsp;
+    <%= link_to t('common.logout'), destroy_user_session_path, method: :delete %>
+  </div>
+<% end %>
