@@ -1,0 +1,18 @@
+= content_tag_for(:div, event) do
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        = link_to "#event-#{event.id}", class: "collapsed", data: { parent: "#events", toggle: "collapse" } do
+          h2.name
+            = event.name
+          .date.text-center
+            .day= event.date.strftime('%-d')
+            .month= event.date.strftime('%b')
+            .year= event.date.strftime('%Y')
+    .panel-collapse.collapse id="event-#{event.id}"
+      .panel-toolbox
+        = link_to "#", class: "btn event-sign-up btn-primary btn-block", data: { event_id: event.id } do
+          = fa_icon "user"
+          | Sign up
+      .panel-body
+        = event.description
