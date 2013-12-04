@@ -1,0 +1,21 @@
+doctype html
+html
+
+  head
+    title Events
+    = stylesheet_link_tag "application", media: "all", data: { turbolinks_track: true }
+    = csrf_meta_tags
+
+  body
+    header#header
+      .container
+        .row
+          .col-sm-12.text-center
+            = fa_icon "calendar"
+            p Events
+
+    #main-content
+      .container
+        = yield
+
+    = javascript_include_tag "application", data: { turbolinks_track: true }
