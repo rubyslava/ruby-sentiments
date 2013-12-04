@@ -18,9 +18,11 @@
       <td><%= event.description %></td>
       <td>
         <%= render 'join_form', event: event %>
-        <% if event.user == current_user %>
+        <% if allowed?(:edit, event) %>
           <%= link_to t('events.edit'), edit_event_path(event) %>
           <br>
+        <% end %>
+        <% if allowed?(:destroy, event) %>
           <%= link_to(t('events.delete'), event_path(event),
                       method: :delete,
                       data: {confirm: t('events.delete_confirmation')}) %>

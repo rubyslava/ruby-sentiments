@@ -26,4 +26,8 @@ module ApplicationHelper
     end
     model_class.name.underscore
   end
+
+  def allowed?(action, record = nil)
+    @policy.class.new(current_user, params, record).allowed?(action)
+  end
 end
