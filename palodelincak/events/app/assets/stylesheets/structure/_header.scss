@@ -1,0 +1,13 @@
+#main-header {
+  font-size: 32px;
+  padding: 20px 0 0;
+  font-weight: 300;
+  color: $header-color;
+  text-shadow: 1px 1px 1px rgba($black, .3);
+  @include transition(opacity 200ms);
+  @include opacity(.5);
+
+  &:hover {
+    @include opacity(1);
+  }
+}

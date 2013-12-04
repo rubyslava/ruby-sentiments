@@ -1,0 +1,21 @@
+$white: #fff;
+$black: #000;
+$grey: #dddddd;
+
+$lightest: #f7f7f7;
+$contrast: #f8bbb1;
+
+$zindex-minimum: 1000;
+
+// buttons
+$btn-primary: #6f749e;
+
+// header
+$header-color: $white;
+
+// events
+$event-bg-color: $white;
+$event-border-color: $grey;
+$event-signedup-bg-color: mix($contrast, $event-bg-color, 20%);
+$event-date-bg-color: $lightest;
+$event-date-color: mix($lightest, $black);

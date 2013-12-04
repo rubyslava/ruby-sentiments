@@ -1,0 +1,96 @@
+.events {
+  @include box-shadow(0px 0px 5px rgba($black, .3));
+}
+
+.event {
+  position: relative;
+  border-bottom: 1px solid $event-border-color;
+  @include transition(all 200ms);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.signed-up {
+    .panel-default > .panel-heading {
+      background: $event-signedup-bg-color;
+    }
+  }
+
+  &.open, &:hover {
+    z-index: $zindex-minimum + 10;
+    margin: 0 -15px;
+    border-bottom-color: $event-bg-color;
+    @include box-shadow(0 0 10px rgba($black, .5));
+  }
+
+  .panel-default {
+    border: none;
+    background-color: $event-bg-color;
+    @include border-radius(0);
+    @include box-shadow(none);
+
+    > .panel-heading {
+      background: transparent;
+      border: none;
+    }
+  }
+
+  .panel-heading {
+    padding: 0;
+    position: relative;
+
+    .panel-title > a {
+      display: block;
+      padding: 25px 20px;
+      text-decoration: none;
+    }
+  }
+
+  .panel-toolbox {
+    border-top: 1px solid $event-border-color;
+    padding: 25px 20px;
+
+    .event-sign-up {
+      .fa {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .panel-title {
+    .name {
+      font-size: 22px;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .date {
+      position: absolute;
+      right: 15px;
+      top: 7px;
+      z-index: $zindex-minimum;
+      background: $event-date-bg-color;
+      padding-top: 7px;
+      color: $event-date-color;
+      font-weight: 300;
+      text-transform: uppercase;
+      @include square(60px);
+      @include border-radius(50%);
+      @include box-shadow(inset 0 0 5px rgba($black, .4));
+
+      .day {
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .month {
+        font-size: 12px;
+      }
+
+      .year {
+        font-size: 10px;
+      }
+    }
+  }
+}
