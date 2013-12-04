@@ -1,28 +1,18 @@
-== README
+ruby-sentiments - events
+========================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+User interface
+--------------
+I focused on simple user interface which will be similiar to real life event choosing. I wanted to create feeling that user is selecting between event brouchures (or some kind of presentation). 
 
-Things you may want to cover:
+Technology
+----------
+I used Ruby on Rails because of future growing potential of this application and because of my previous experience also. Additional technologies are Twitter Bootstrap (for easier future work with user interface), Slim lang (for lighter and faster views), CoffeeScript (for handling events).
 
-* Ruby version
+Usage
+-----
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* ``bundle``
+* ``rake db:migrate``
+* ``rake db:seed``
+* ``rails s``
