@@ -9,11 +9,10 @@ h2. Rules
 
 Ofcourse this shouldn't be a single event. While every solution is interesting to see, the real fun comes, when the original task has to be extended or even changed a lot. So we could compare the amount of changes and the pain felt that was needed to satisfy this new specification.
 
-In this repo, you can see results of that. One directory per developer, Readme's explaining developers decisions. 
-
 h3. Specification 1:
 # User can see list of events (name, description, date, from time, to time)
 # User can sign to attend any of those events. 
 # User can visit this page later and still see his attendance.
 
-( Czech version: http://rails-forum.cz/t/ruby-sentiments/377 )
+In this repo, you can see results of that. One directory per developer, Readme's explaining developers decisions. 
+( Czech: http://rails-forum.cz/t/ruby-sentiments/377 )
