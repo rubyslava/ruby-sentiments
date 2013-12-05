@@ -1,0 +1,19 @@
+h1. Ruby sentiments
+
+In our development discussions with beer, we always wonder how THIS guy would solve SOMETHING we are currently working on. Although programming is an exact discipline, solutions of problems differ person to person very strongly. And it would be really nice to be able to compare different approaches to usual problems that we solve everyday. Here you go:
+
+h2. Rules
+# Some (means 3-5) rubyists concurrently work on 1 specification from the area of web development. They don't spend on this more than 1 evening (equal to about 2-4 hours max).
+# Rubyists push their work to this repo and comment their work (shortly, but well) in Readme.
+# At a regular Ruby meeting, rubyists present their code in person in front of other devs. Important thing that should be heard from them is WHY such a code was written, not just HOW it works.
+
+Ofcourse this shouldn't be a single event. While every solution is interesting to see, the real fun comes, when the original task has to be extended or even changed a lot. So we could compare the amount of changes and the pain felt that was needed to satisfy this new specification.
+
+In this repo, you can see results of that. One directory per developer, Readme's explaining developers decisions. 
+
+Specification 1:
+1) User can see list of events (name, description, date, from time, to time)
+2) User can sign to attend any of those events. 
+3) User can visit this page later and still see his attendance.
+
+( Czech version: http://rails-forum.cz/t/ruby-sentiments/377 )
