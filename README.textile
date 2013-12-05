@@ -11,9 +11,9 @@ Ofcourse this shouldn't be a single event. While every solution is interesting t
 
 In this repo, you can see results of that. One directory per developer, Readme's explaining developers decisions. 
 
-Specification 1:
-1) User can see list of events (name, description, date, from time, to time)
-2) User can sign to attend any of those events. 
-3) User can visit this page later and still see his attendance.
+h3. Specification 1:
+# User can see list of events (name, description, date, from time, to time)
+# User can sign to attend any of those events. 
+# User can visit this page later and still see his attendance.
 
 ( Czech version: http://rails-forum.cz/t/ruby-sentiments/377 )
