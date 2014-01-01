@@ -8,7 +8,7 @@ class JoinEvent
   def join(user)
     return false if event.capacity_reached?
 
-    event.attending_user_ids = (event.attending_user_ids + [user.id]).uniq
+    event.users << user
     event.save
   end
 end

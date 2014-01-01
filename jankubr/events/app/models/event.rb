@@ -1,19 +1,15 @@
 class Event < ActiveRecord::Base
   belongs_to :user
-
-  serialize :attending_user_ids, Array
+  has_many :event_attendees, dependent: :destroy
+  has_many :users, through: :event_attendees
 
   validates_presence_of :name, :date, :starts_at
 
   def user_attending?(user)
-    attending_user_ids.include?(user.id)
+    user_ids.include?(user.id)
   end
 
   def capacity_reached?
-    capacity && attending_user_ids.size >= capacity
-  end
-
-  def attendees
-    User.where(id: attending_user_ids)
+    capacity && user_ids.size >= capacity
   end
 end

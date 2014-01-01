@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable
+  has_many :event_attendees, dependent: :destroy
+  has_many :events, through: :event_attendees
+
   before_create :set_role
 
   def admin?

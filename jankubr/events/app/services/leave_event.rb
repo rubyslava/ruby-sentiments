@@ -6,7 +6,7 @@ class LeaveEvent
   end
 
   def leave(user)
-    event.attending_user_ids -= [user.id]
+    event.users -= [user]
     event.save
   end
 end

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = @policy.scope(Event.order('date, starts_at'))
+    @events = @policy.scope(Event.includes(:users).order('date, starts_at'))
   end
 
   def new

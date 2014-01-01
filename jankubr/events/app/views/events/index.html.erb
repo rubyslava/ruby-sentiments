@@ -20,13 +20,13 @@
       </td>
       <td><%= event.description %></td>
       <td>
-        <%= event.attendees.size %>
+        <%= event.users.size %>
         <% if event.capacity %>
           <%= t('common.of') %> <%= event.capacity %>
         <% end %>
         <% if current_user.admin? %>
           <br>
-          <%= event.attendees.map(&:email).join(', ') %>
+          <%= event.users.map(&:email).join(', ') %>
         <% end %>
       </td>
       <td>
