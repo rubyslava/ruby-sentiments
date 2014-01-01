@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="OMG LOL">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/foundation.min.css">
+  </head>
+
+  <body>
+    <div class="row">
+      <h1>Seznamka nerdů</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Místo</th>
+            <th>Dorazím?</th>
+            <th>Akce</th>
+          </tr>
+          </thead>
+
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= event.date.strftime('%d.%m.%Y') %></td>
+              <td><%= event.place %></td>
+              <td data-rsvp><%= event.attending? %></td>
+              <td>
+                <%= button_to 'Ano', '/attend/' + event.id.to_s + '/1' %>
+                <%= button_to 'Ne', '/attend/' + event.id.to_s + '/0' %>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </body>
+</html>

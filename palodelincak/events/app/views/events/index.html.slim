@@ -1,0 +1,5 @@
+.row
+  .col-sm-12
+    #events.events.panel-group
+      - @events.each do |event|
+        = render "event", event: event

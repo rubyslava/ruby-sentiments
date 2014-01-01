@@ -1,0 +1,9 @@
+.btn-primary {
+  background-color: $btn-primary;
+  border-color: darken($btn-primary, 5%);
+
+  &:active, &:hover {
+    background-color: darken($btn-primary, 5%);
+    border-color: darken($btn-primary, 10%);
+  }
+}
