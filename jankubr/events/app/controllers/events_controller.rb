@@ -40,7 +40,7 @@ class EventsController < ApplicationController
     if JoinEvent.new(@event).join(current_user)
       flash[:notice] = t('events.joined')
     else
-      flash[:notice] = t('events.could_not_join')
+      flash[:alert] = t('events.could_not_join')
     end
     redirect_to(events_path)
   end
@@ -49,7 +49,7 @@ class EventsController < ApplicationController
     if LeaveEvent.new(@event).leave(current_user)
       flash[:notice] = t('events.left')
     else
-      flash[:notice] = t('events.could_not_leave')
+      flash[:alert] = t('events.could_not_leave')
     end
     redirect_to(events_path)
   end

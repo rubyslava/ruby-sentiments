@@ -9,6 +9,10 @@ class Event < ActiveRecord::Base
     attending_user_ids.include?(user.id)
   end
 
+  def capacity_reached?
+    capacity && attending_user_ids.size >= capacity
+  end
+
   def attendees
     User.where(id: attending_user_ids)
   end

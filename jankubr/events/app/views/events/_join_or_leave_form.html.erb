@@ -3,6 +3,8 @@
   <%= form_for event, url: leave_event_path(event), method: :patch do %>
     <%= submit_tag t('events.leave') %>
   <% end %>
+<% elsif event.capacity_reached? %>
+  <%= t('events.capacity_reached') %>
 <% else %>
   <%= form_for event, url: join_event_path(event), method: :patch do %>
     <%= submit_tag t('events.join') %>

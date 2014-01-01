@@ -65,6 +65,22 @@ describe 'Events' do
     event.reload.user_attending?(user).should == false
   end
 
+  it "makes sure user cannot join event capacity of which as been reached" do
+    user = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user)
+    event = FactoryGirl.create(:event, capacity: 1)
+    JoinEvent.new(event).join(user)
+
+    login_as(user2)
+    page.should_not have_content('I will attend this event')
+    page.should have_content('Capacity reached')
+
+    event.update_attributes(capacity: 2)
+    visit '/'
+    page.should have_button('I will attend this event')
+    page.should_not have_content('Capacity reached')
+  end
+
   it "allows admin to see emails of all attendees" do
     user = FactoryGirl.create(:user)
     admin = FactoryGirl.create(:user)

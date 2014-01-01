@@ -16,6 +16,7 @@ en:
     could_not_leave: Could not leave the event
     when: When
     attendees: Attendees
+    capacity_reached: Capacity reached
   activerecord:
     attributes:
       event:
