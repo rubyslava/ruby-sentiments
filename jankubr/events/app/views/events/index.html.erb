@@ -5,9 +5,7 @@
     <th><%= t('activerecord.attributes.event.name')%></th>
     <th><%= t('events.when')%></th>
     <th><%= t('activerecord.attributes.event.description')%></th>
-    <% if current_user.admin? %>
-      <th><%= t('events.attendees')%></th>
-    <% end %>
+    <th><%= t('events.attendees')%></th>
     <th><%= t('common.actions')%></th>
   </tr>
   <% @events.each do |event| %>
@@ -21,11 +19,16 @@
           <% end %>
       </td>
       <td><%= event.description %></td>
-      <% if current_user.admin? %>
-        <td>
+      <td>
+        <%= event.attendees.size %>
+        <% if event.capacity %>
+          <%= t('common.of') %> <%= event.capacity %>
+        <% end %>
+        <% if current_user.admin? %>
+          <br>
           <%= event.attendees.map(&:email).join(', ') %>
-        </td>
-      <% end %>
+        <% end %>
+      </td>
       <td>
         <%= render 'actions', event: event %>
       </td>

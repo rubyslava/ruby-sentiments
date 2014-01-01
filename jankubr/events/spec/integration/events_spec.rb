@@ -23,12 +23,15 @@ describe 'Events' do
     event.starts_at.hour.should == 18
     event.ends_at.hour.should == 20
     event.description.should == 'Meetup of Rubyists'
+    event.capacity.should == nil
     page.should have_content(event.name)
 
     click_link('Update event')
     fill_in 'Name', with: 'Python meetup'
+    fill_in 'Capacity', with: 20
     click_button('Save')
     event.reload.name.should == 'Python meetup'
+    event.capacity.should == 20
     page.should have_content(event.name)
 
     user2 = FactoryGirl.create(:user)
@@ -49,12 +52,13 @@ describe 'Events' do
 
   it "allows user to join and leave an event" do
     user = FactoryGirl.create(:user)
-    event = FactoryGirl.create(:event)
+    event = FactoryGirl.create(:event, capacity: 20)
     login_as(user)
     click_button('I will attend this event')
 
-    page.should have_content('You are attending this event')
     event.reload.user_attending?(user).should == true
+    page.should have_content('You are attending this event')
+    page.should have_content('1 of 20')
 
     click_button('Leave')
     page.should_not have_content('You are attending this event')

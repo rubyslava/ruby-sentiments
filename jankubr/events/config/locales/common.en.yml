@@ -7,6 +7,7 @@ en:
     object: Object
     could_not_be_saved: could not be saved
     actions: Actions
+    of: of
   date:
     formats:
       default: "%d/%m/%Y"

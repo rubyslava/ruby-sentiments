@@ -24,3 +24,4 @@ en:
         date: Date
         starts_at: Starts at
         ends_at: Ends at
+        capacity: Capacity
