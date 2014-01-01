@@ -11,6 +11,9 @@ en:
     joined: You joined the event
     could_not_join: Could not join the event
     attending_this_event: You are attending this event
+    leave: Leave
+    left: You left the event
+    could_not_leave: Could not leave the event
     when: When
     attendees: Attendees
   activerecord:

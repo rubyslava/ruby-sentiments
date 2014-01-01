@@ -3,6 +3,7 @@ Events::Application.routes.draw do
   resources :events do
     member {
       patch :join
+      patch :leave
     }
   end
 

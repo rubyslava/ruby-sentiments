@@ -45,6 +45,15 @@ class EventsController < ApplicationController
     redirect_to(events_path)
   end
 
+  def leave
+    if LeaveEvent.new(@event).leave(current_user)
+      flash[:notice] = t('events.left')
+    else
+      flash[:notice] = t('events.could_not_leave')
+    end
+    redirect_to(events_path)
+  end
+
 private
 
   def check_rights
