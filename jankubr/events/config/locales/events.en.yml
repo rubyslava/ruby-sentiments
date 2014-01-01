@@ -11,6 +11,8 @@ en:
     joined: You joined the event
     could_not_join: Could not join the event
     attending_this_event: You are attending this event
+    when: When
+    attendees: Attendees
   activerecord:
     attributes:
       event:

@@ -8,4 +8,8 @@ class Event < ActiveRecord::Base
   def user_attending?(user)
     attending_user_ids.include?(user.id)
   end
+
+  def attendees
+    User.where(id: attending_user_ids)
+  end
 end

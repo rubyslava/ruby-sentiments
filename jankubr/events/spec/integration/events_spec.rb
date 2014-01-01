@@ -56,4 +56,20 @@ describe 'Events' do
     page.should have_content('You are attending this event')
     event.reload.user_attending?(user).should == true
   end
+
+  it "allows admin to see emails of all attendees" do
+    user = FactoryGirl.create(:user)
+    admin = FactoryGirl.create(:user)
+    admin.update_attributes(role: 'admin')
+    event = FactoryGirl.create(:event)
+    JoinEvent.new(event).join(user)
+
+    login_as(admin)
+    page.should have_content(user.email)
+    page.should_not have_content(event.user.email)
+
+    login_as(user)
+    page.should_not have_content(user.email)
+    page.should_not have_content(event.user.email)
+  end
 end

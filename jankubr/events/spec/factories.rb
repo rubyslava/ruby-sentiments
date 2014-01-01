@@ -35,6 +35,7 @@ FactoryGirl.define do
   end
 
   factory :event do
+    user
     name
     date { Date.tomorrow }
     starts_at { Time.now + 3.hours }

@@ -3,19 +3,29 @@
 <table cellspacing="0">
   <tr>
     <th><%= t('activerecord.attributes.event.name')%></th>
-    <th><%= t('activerecord.attributes.event.date')%></th>
-    <th><%= t('activerecord.attributes.event.starts_at')%></th>
-    <th><%= t('activerecord.attributes.event.ends_at')%></th>
+    <th><%= t('events.when')%></th>
     <th><%= t('activerecord.attributes.event.description')%></th>
+    <% if current_user.admin? %>
+      <th><%= t('events.attendees')%></th>
+    <% end %>
     <th><%= t('common.actions')%></th>
   </tr>
   <% @events.each do |event| %>
     <tr <%= attending_class(event) %>>
       <td><%= event.name %></td>
-      <td><%= I18n.l(event.date) %></td>
-      <td><%= I18n.l(event.starts_at) %></td>
-      <td><%= I18n.l(event.ends_at) %></td>
+      <td>
+          <%= I18n.l(event.date) %>
+          <%= I18n.l(event.starts_at) %>
+          <% if event.ends_at %>
+            - <%= I18n.l(event.ends_at) %>
+          <% end %>
+      </td>
       <td><%= event.description %></td>
+      <% if current_user.admin? %>
+        <td>
+          <%= event.attendees.map(&:email).join(', ') %>
+        </td>
+      <% end %>
       <td>
         <%= render 'join_form', event: event %>
         <% if allowed?(:edit, event) %>
