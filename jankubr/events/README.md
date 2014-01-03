@@ -1,5 +1,25 @@
 Events for Ruby sentiments
 ==========================
+
+INCREMENT 2
+--------------
+
+1. User can cancel his registration to event.
+Added a service object LeaveEvent that handles this. Controller action only delegates to this object.
+2. Event has limit of attendees.
+Added capacity field to events table. When capacity reached (as determined by the Event#capacity_reached? method), the "I will attend this event"
+button is not shown. 
+Also the service object JoinEvent won't let a user join if the capacity is reached (If user tries to go around the missing
+button). For this I needed a first unit test.
+3. User can be an admin and then see a list of emails of attending users.
+As I had a complete user management in place, simple addition of "role" column in users gave me the ability to have an admin user.
+One bigger change was needed here, the serialized "attending_user_ids" column from events table had to be replaced with a join table.
+Otherwise, to show the attendees' emails, I'd need to query them with a separate call for each event or do some custom ugly pre-fetching.
+Using a join table I can use standard Rails' "includes": Event.includes(:users).order('date, starts_at').
+
+
+INCREMENT 1
+--------------
 I approached this as a normal on-the-job task, meaning I used the tools I'm most familiar with and I know
 I can rely on during daily development and will not let me down when I need to develop features fast.
 
