@@ -58,6 +58,8 @@ describe 'Events' do
 
     fill_in 'Name', with: 'Ruby meetup'
     select 'Wednesday', from: 'Every'
+    fill_in 'Starts at', with: '18:00'
+    fill_in 'Ends at', with: '20:00'
     fill_in 'Description', with: 'Meetup of Rubyists'
     click_button('Save')
     #event was created
@@ -67,29 +69,31 @@ describe 'Events' do
     event.day_of_week.should == 3
     event.description.should == 'Meetup of Rubyists'
     event.capacity.should == nil
+    event.event_dates.size.should > 0
     page.should have_content(event.name)
   end
 
   it "allows user to join and leave an event" do
     user = FactoryGirl.create(:user)
     event = FactoryGirl.create(:event, capacity: 20)
+    event_date = event.event_dates.last
     login_as(user)
     click_button('I will attend this event')
 
-    event.reload.user_attending?(user).should == true
+    event_date.reload.user_attending?(user).should == true
     page.should have_content('You are attending this event')
     page.should have_content('1 of 20')
 
     click_button('Leave')
     page.should_not have_content('You are attending this event')
-    event.reload.user_attending?(user).should == false
+    event_date.reload.user_attending?(user).should == false
   end
 
   it "makes sure user cannot join event capacity of which as been reached" do
     user = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user)
     event = FactoryGirl.create(:event, capacity: 1)
-    JoinEvent.new(event).join(user)
+    JoinEventDate.new(event.event_dates.last).join(user)
 
     login_as(user2)
     page.should_not have_content('I will attend this event')
@@ -120,7 +124,7 @@ describe 'Events' do
     admin = FactoryGirl.create(:user)
     admin.update_attributes(role: 'admin')
     event = FactoryGirl.create(:event)
-    JoinEvent.new(event).join(user)
+    JoinEventDate.new(event.event_dates.last).join(user)
 
     login_as(admin)
     page.should have_content(user.email)

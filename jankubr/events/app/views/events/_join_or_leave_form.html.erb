@@ -1,14 +1,14 @@
-<% if event.user_attending?(current_user) %>
+<% if event_date.user_attending?(current_user) %>
   <%= t('events.attending_this_event') %><br>
-  <%= form_for event, url: leave_event_path(event), method: :patch do %>
+  <%= form_for event_date, url: leave_event_date_path(event_date), method: :patch do %>
     <%= submit_tag t('events.leave') %>
   <% end %>
-<% elsif event.capacity_reached? %>
+<% elsif event_date.capacity_reached? %>
   <%= t('events.capacity_reached') %><br>
-<% elsif event.too_late_to_join? %>
+<% elsif event_date.too_late_to_join? %>
   <%= t('events.too_late_to_join') %><br>
 <% else %>
-  <%= form_for event, url: join_event_path(event), method: :patch do %>
+  <%= form_for event_date, url: join_event_date_path(event_date), method: :patch do %>
     <%= submit_tag t('events.join') %>
   <% end %>
 <% end %>

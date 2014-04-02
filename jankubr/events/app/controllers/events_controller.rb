@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = @policy.scope(Event.includes(:users).order('date, starts_at'))
+    @event_dates = @policy.scope(EventDate.includes(:event, :users).references(:event).order('event_dates.date, starts_at'))
   end
 
   def new
@@ -33,24 +33,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     flash[:notice] = t('events.deleted')
-    redirect_to(events_path)
-  end
-
-  def join
-    if JoinEvent.new(@event).join(current_user)
-      flash[:notice] = t('events.joined')
-    else
-      flash[:alert] = t('events.could_not_join')
-    end
-    redirect_to(events_path)
-  end
-
-  def leave
-    if LeaveEvent.new(@event).leave(current_user)
-      flash[:notice] = t('events.left')
-    else
-      flash[:alert] = t('events.could_not_leave')
-    end
     redirect_to(events_path)
   end
 

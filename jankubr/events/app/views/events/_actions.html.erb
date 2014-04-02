@@ -1,10 +1,10 @@
-<%= render 'join_or_leave_form', event: event %>
-<% if allowed?(:edit, event) %>
-  <%= link_to t('events.edit'), edit_event_path(event) %>
+<%= render 'join_or_leave_form', event_date: event_date %>
+<% if allowed?(:edit, event_date.event) %>
+  <%= link_to t('events.edit'), edit_event_path(event_date.event) %>
   <br>
 <% end %>
-<% if allowed?(:destroy, event) %>
-  <%= link_to(t('events.delete'), event_path(event),
+<% if allowed?(:destroy, event_date.event) %>
+  <%= link_to(t('events.delete'), event_path(event_date.event),
               method: :delete,
               data: {confirm: t('events.delete_confirmation')}) %>
 <% end %>

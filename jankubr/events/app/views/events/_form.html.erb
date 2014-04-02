@@ -10,17 +10,6 @@
         <%= f.label :date %>
         <%= f.date_field :date %>
       </p>
-
-      <p>
-        <%= f.label :starts_at %>
-        <%= f.time_field :starts_at %>
-      </p>
-
-      <p>
-        <%= f.label :ends_at %>
-        <%= f.time_field :ends_at %>
-      </p>
-
       - or -
 
       <p>
@@ -29,6 +18,17 @@
       </p>
 
     </fieldset>
+
+    <p>
+      <%= f.label :starts_at %>
+      <%= f.time_field :starts_at %>
+    </p>
+
+    <p>
+      <%= f.label :ends_at %>
+      <%= f.time_field :ends_at %>
+    </p>
+
     <p>
       <%= f.label :description %>
       <%= f.text_area :description %>

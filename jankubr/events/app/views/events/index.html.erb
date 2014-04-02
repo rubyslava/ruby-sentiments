@@ -8,33 +8,31 @@
     <th><%= t('events.attendees')%></th>
     <th><%= t('common.actions')%></th>
   </tr>
-  <% @events.each do |event| %>
-    <tr <%= attending_class(event) %>>
-      <td><%= event.name %></td>
+  <% @event_dates.each do |event_date| %>
+    <tr <%= attending_class(event_date) %>>
+      <td><%= event_date.event.name %></td>
       <td>
-        <% if event.date %>
-          <%= I18n.l(event.date) %>
-          <%= I18n.l(event.starts_at) %>
-          <% if event.ends_at %>
-            - <%= I18n.l(event.ends_at) %>
+        <% if event_date.date %>
+          <%= I18n.l(event_date.date) %>
+          <%= I18n.l(event_date.event.starts_at) %>
+          <% if event_date.event.ends_at %>
+            - <%= I18n.l(event_date.event.ends_at) %>
           <% end %>
-        <% else %>
-          <%= t('activerecord.attributes.event.day_of_week') %> <%= day_names[event.day_of_week] %>
         <% end %>
       </td>
-      <td><%= event.description %></td>
+      <td><%= event_date.event.description %></td>
       <td>
-        <%= event.users.size %>
-        <% if event.capacity %>
-          <%= t('common.of') %> <%= event.capacity %>
+        <%= event_date.users.size %>
+        <% if event_date.event.capacity %>
+          <%= t('common.of') %> <%= event_date.event.capacity %>
         <% end %>
         <% if current_user.admin? %>
           <br>
-          <%= event.users.map(&:email).join(', ') %>
+          <%= event_date.users.map(&:email).join(', ') %>
         <% end %>
       </td>
       <td>
-        <%= render 'actions', event: event %>
+        <%= render 'actions', event_date: event_date %>
       </td>
     </tr>
   <% end %>
