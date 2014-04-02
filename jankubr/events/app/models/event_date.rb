@@ -11,8 +11,8 @@ class EventDate < ActiveRecord::Base
     user_ids.include?(user.id)
   end
 
-  def can_join?
-    capacity_reached? || too_late_to_join?
+  def can_be_joined?
+    !capacity_reached? && !too_late_to_join?
   end
 
   def capacity_reached?

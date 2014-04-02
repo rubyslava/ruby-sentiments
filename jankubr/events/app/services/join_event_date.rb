@@ -6,7 +6,7 @@ class JoinEventDate
   end
 
   def join(user)
-    return false if event_date.can_join?
+    return false unless event_date.can_be_joined?
 
     event_date.users << user
     event_date.save
