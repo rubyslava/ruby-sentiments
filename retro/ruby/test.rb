@@ -10,7 +10,7 @@ class DatingTest < Minitest::Test
   end
 
   def setup
-    DB << Event.new(1, Time.now, 'Fraktal', nil)
+    Event.storage << Event.new(1, Time.now, 'Fraktal', nil)
   end
 
   def test_index
@@ -21,7 +21,7 @@ class DatingTest < Minitest::Test
   end
 
   def test_create
-    post '/attend/1/1'
+    post '/attend/1'
     follow_redirect!
     assert last_response.body.include?('true')
     assert Event.find(1).rsvp

@@ -14,27 +14,50 @@ class Dating < Rails::Application
   Rails.logger = config.logger
 
   routes.draw do
-    get '/'  => 'meetups#index'
-    post '/attend/:id/:rsvp' => 'attendings#create', as: :attend
+    get '/(admin)' => 'meetups#index'
+    post '/rsvp/:id' => 'attendings#create'
+    post '/rsvp/:id/delete' => 'attendings#destroy'
   end
 end
 
 class MeetupsController < ActionController::Base
   prepend_view_path "#{Rails.root}"
   def index
-    @events = Event.all
+    if request.fullpath == '/admin'
+      if authenticate_with_http_basic {|u, p| u == "admin" && p == "pass"}
+        @admin = true
+      else
+        request_http_basic_authentication and return
+      end
+    end
+
+    @events = Event.all.sort_by!(&:date)
     render '/views/index'
   end
 end
 
 class AttendingsController < ActionController::Base
   def create
-    event = Event.find(params[:id].to_i)
-    event.rsvp = params[:rsvp] == '1' ? true : false
+    Rsvp.storage << Rsvp.new(Rsvp.next_id, params[:id].to_i, request.session_options[:id], params[:email])
     redirect_to '/'
+  end
+
+  def destroy
+    event = Event.find(params["id"].to_i)
+    if event
+      if rsvp = event.rsvps.select{|r| r.session_id == request.session["session_id"]}.first
+        rsvp.destroy
+        redirect_to '/'
+      else
+        head 401
+      end
+    else
+      head 404
+    end
   end
 end
 
-DB << Event.new(1, Time.now, 'Fraktal', nil)
-DB << Event.new(2, Time.now + 100000, 'Fraktal', nil)
-DB << Event.new(3, Time.now + 1000000, 'Fraktal', nil)
+Event.storage << Event.new(0, Time.now, 'Fraktal', 1, false)
+Event.storage << Event.new(1, Time.now + 100000, 'Fraktal', 2, true)
+Event.storage << Event.new(2, Time.now + 1000000, 'Fraktal', 0, true)
+Event.storage << Event.new(3, Time.now - 1000000, 'Fraktal', 0, false)
