@@ -17,6 +17,7 @@ en:
     when: When
     attendees: Attendees
     capacity_reached: Capacity reached
+    too_late_to_join: Too late to join
   activerecord:
     attributes:
       event:

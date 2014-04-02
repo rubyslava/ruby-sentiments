@@ -6,7 +6,7 @@ class JoinEvent
   end
 
   def join(user)
-    return false if event.capacity_reached?
+    return false if event.can_join_event?
 
     event.users << user
     event.save

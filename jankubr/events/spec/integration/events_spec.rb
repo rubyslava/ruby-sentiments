@@ -81,6 +81,20 @@ describe 'Events' do
     page.should_not have_content('Capacity reached')
   end
 
+  it "makes sure user cannot join event if it stats less than a day from now" do
+    user = FactoryGirl.create(:user)
+    event = FactoryGirl.create(:event, date: Date.today)
+
+    login_as(user)
+    page.should_not have_content('I will attend this event')
+    page.should have_content('Too late to join')
+
+    event.update_attributes(date: Date.tomorrow)
+    visit '/'
+    page.should have_button('I will attend this event')
+    page.should_not have_content('Too late to join')
+  end
+
   it "allows admin to see emails of all attendees" do
     user = FactoryGirl.create(:user)
     admin = FactoryGirl.create(:user)
