@@ -5,22 +5,30 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
     </p>
+    <fieldset name="When">
+      <p>
+        <%= f.label :date %>
+        <%= f.date_field :date %>
+      </p>
 
-    <p>
-      <%= f.label :date %>
-      <%= f.date_field :date %>
-    </p>
+      <p>
+        <%= f.label :starts_at %>
+        <%= f.time_field :starts_at %>
+      </p>
 
-    <p>
-      <%= f.label :starts_at %>
-      <%= f.time_field :starts_at %>
-    </p>
+      <p>
+        <%= f.label :ends_at %>
+        <%= f.time_field :ends_at %>
+      </p>
 
-    <p>
-      <%= f.label :ends_at %>
-      <%= f.time_field :ends_at %>
-    </p>
+      - or -
 
+      <p>
+        <%= f.label :day_of_week %>
+        <%= f.select :day_of_week, days_of_week_for_select, include_blank: true %>
+      </p>
+
+    </fieldset>
     <p>
       <%= f.label :description %>
       <%= f.text_area :description %>

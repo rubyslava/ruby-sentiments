@@ -10,6 +10,6 @@ class EventsPolicy < Policy
   end
 
   def filtered_params
-    params.require(:event).permit(:name, :date, :starts_at, :ends_at, :description, :capacity)
+    params.require(:event).permit(:name, :date, :starts_at, :ends_at, :day_of_week, :description, :capacity)
   end
 end

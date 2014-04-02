@@ -27,3 +27,5 @@ en:
         starts_at: Starts at
         ends_at: Ends at
         capacity: Capacity
+        day_of_week: Every
+

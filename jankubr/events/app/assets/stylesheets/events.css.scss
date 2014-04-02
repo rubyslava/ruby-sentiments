@@ -16,6 +16,9 @@ table {
   th {
     text-align: left;
   }
+  td {
+    padding: 10px;
+  }
   tr.attending_event td {
     background-color: $light_grey;
   }

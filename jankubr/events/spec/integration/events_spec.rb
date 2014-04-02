@@ -50,6 +50,26 @@ describe 'Events' do
     Event.count.should == 0
   end
 
+  it "allows a user to create an event which repeats each of week" do
+    user = FactoryGirl.create(:user)
+    login_as(user)
+    click_link('Add a new event')
+    click_button('Save')
+
+    fill_in 'Name', with: 'Ruby meetup'
+    select 'Wednesday', from: 'Every'
+    fill_in 'Description', with: 'Meetup of Rubyists'
+    click_button('Save')
+    #event was created
+    event = Event.last
+    event.name.should == 'Ruby meetup'
+    event.date.should == nil
+    event.day_of_week.should == 3
+    event.description.should == 'Meetup of Rubyists'
+    event.capacity.should == nil
+    page.should have_content(event.name)
+  end
+
   it "allows user to join and leave an event" do
     user = FactoryGirl.create(:user)
     event = FactoryGirl.create(:event, capacity: 20)

@@ -12,11 +12,15 @@
     <tr <%= attending_class(event) %>>
       <td><%= event.name %></td>
       <td>
+        <% if event.date %>
           <%= I18n.l(event.date) %>
           <%= I18n.l(event.starts_at) %>
           <% if event.ends_at %>
             - <%= I18n.l(event.ends_at) %>
           <% end %>
+        <% else %>
+          <%= t('activerecord.attributes.event.day_of_week') %> <%= day_names[event.day_of_week] %>
+        <% end %>
       </td>
       <td><%= event.description %></td>
       <td>
