@@ -24,8 +24,13 @@
           <tr>
             <th>Datum</th>
             <th>Místo</th>
+            <th>Limit</th>
             <th>Dorazím?</th>
-            <th>Akce</th>
+            <% if not @admin %>
+              <th>Akce</th>
+            <% else %>
+              <th>Emaily</th>
+            <% end %>
           </tr>
           </thead>
 
@@ -34,10 +39,25 @@
             <tr>
               <td><%= event.date.strftime('%d.%m.%Y') %></td>
               <td><%= event.place %></td>
-              <td data-rsvp><%= event.attending? %></td>
+              <td><%= event.rsvps.count %> z <%= event.limit %>ti</td>
+              <td data-rsvp><%= Rsvp.attending?(event.id, request.session["session_id"]) %></td>
               <td>
-                <%= button_to 'Ano', '/attend/' + event.id.to_s + '/1' %>
-                <%= button_to 'Ne', '/attend/' + event.id.to_s + '/0' %>
+                <% if not @admin %>
+                  <% if Rsvp.attending?(event.id, request.session["session_id"]) %>
+                    <%= button_to 'Odhlásit', '/rsvp/' + event.id.to_s + '/delete' %>
+                  <% elsif event.full? %>
+                    Plno :(
+                  <% elsif event.late? %>
+                    Pozdě
+                  <% else %>
+                    <form action="<%= '/rsvp/' + event.id.to_s %>" method="POST">
+                      <input type="email" name="email" />
+                      <input type="submit" value="Přihlásit" />
+                    </form>
+                  <% end %>
+                <% else %>
+                  <%= event.emails.join(', ') %>
+                <% end %>
             </td>
             </tr>
           <% end %>

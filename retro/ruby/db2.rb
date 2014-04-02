@@ -1,5 +1,6 @@
-DB_EVENT = []
-DB_RSVP = []
+Maglev::PERSISTENT_ROOT[:event] = []
+Maglev::PERSISTENT_ROOT[:rsvp] = []
+
 
 class Event < Struct.new(:id, :date, :place, :limit, :recurrence, :parent)
   def initialize(*params)
@@ -10,6 +11,7 @@ class Event < Struct.new(:id, :date, :place, :limit, :recurrence, :parent)
         Event.storage << Event.new(self.class.next_id, self.date + push, self.place, self.limit, false, self)
       end
     end
+    Maglev.commit_transaction
   end
 
   def self.all
@@ -45,7 +47,7 @@ class Event < Struct.new(:id, :date, :place, :limit, :recurrence, :parent)
   end
 
   def self.storage
-    DB_EVENT
+    Maglev::PERSISTENT_ROOT[:event]
   end
 
   def self.next_id
@@ -71,7 +73,7 @@ class Rsvp < Struct.new(:id, :event_id, :session_id, :email)
   end
 
   def self.storage
-    DB_RSVP
+    Maglev::PERSISTENT_ROOT[:rsvp]
   end
 
   def self.next_id
