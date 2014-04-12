@@ -1,0 +1,11 @@
+<% css_class = going_to?(event) ? 'going' : 'not-going' %>
+<%= div_for event, class: css_class do %>
+  <%= event.name %>
+  <%= event.date %>
+  <%= time(event.from_time) %>
+  <%= time(event.to_time) %>
+  <% if going_to?(event) %>
+    You are registered for this event!
+  <% end %>
+  <%= button_to 'Join', event_registrations_path(event) %>
+<% end %>
