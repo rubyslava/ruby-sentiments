@@ -4,8 +4,8 @@ This series of presentations is here to show how much solution of a simple task 
 
 h2. Rules
 # Ruby programmers (yes, this is Ruby only) concurrently work on 1 specification from the area of web development. 
-# They push their solution from current round to this repo.
-# At the next Ruby meeting, they present their code for other devs. WHY such a code was written is very important, not just HOW it works.
+# They push their solution of current round to this repo.
+# At the next Ruby meeting, they present their code to other devs. WHY such a code was written is very important, not just HOW it works.
 
 h3. Round 1:
 * User can see list of events (name, description, date, from time, to time).
