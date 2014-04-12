@@ -1,9 +1,9 @@
 h1. Ruby Sentiments
 
-This series of presentations is here to show, how much will differ solution of a simple task programmed by diverse developers. The real fun comes, when the original task has to be extended or even changed a lot :).
+This series of presentations is here to show how much solution of a simple task programmed by diverse developers will differ. The real fun comes, when the original task has to be extended or ... changed a lot :).
 
 h2. Rules
-# Rubyist (yes, this is Ruby only) concurrently work on 1 specification from the area of web development. 
+# Ruby programmers (yes, this is Ruby only) concurrently work on 1 specification from the area of web development. 
 # They push their solution from current round to this repo.
 # At the next Ruby meeting, they present their code for other devs. WHY such a code was written is very important, not just HOW it works.
 
@@ -21,6 +21,5 @@ h3. Round 3
 # Two types of events: one-off (with a fixed date) and regular (day in week).
 # Users can sign at least one day before the event.
 
-
-In this repo, you can see results of that. One directory per developer, Readme's explaining developers decisions. 
+In this repo, you can see results or all rounds. One directory per developer, directory's Readme worth reading.
 ( Czech: http://rails-forum.cz/t/ruby-sentiments/377 )
