@@ -1,11 +1,18 @@
 h1. Ruby Sentiments
 
-This series of presentations is here to show how much solution of a simple task programmed by diverse developers will differ. The real fun comes, when the original task has to be extended or ... changed a lot :).
+This series of presentations is here to show how much the solution of a simple web development task programmed by diverse developers can differ.
+
+And, the real fun comes, when the original task has to be extended or changed a lot or something unexpected has to be added :).
 
 h2. Rules
-# Ruby programmers (yes, this is Ruby only) concurrently work on 1 specification from the area of web development. 
+# Ruby programmers (yes, this is Ruby only) individually work on given specification. 
 # They push their solution of current round to this repo.
 # At the next Ruby meeting, they present their code to other devs. WHY such a code was written is very important, not just HOW it works.
+
+h2. Specification
+
+The topic is something that every experienced web dev has probably met before.
+Its an "events calendar" website: each user can sign to an event from a list. Lets make it happen:
 
 h3. Round 1:
 * User can see list of events (name, description, date, from time, to time).
@@ -13,13 +20,18 @@ h3. Round 1:
 * User can visit this page later and still see his attendance.
 
 h3. Round 2
-* User can sign off an event.
+* Attendee can sign off an event.
 * Events can have limited space. It this limit gets reached, users cant sign to such limited event.
-* Admin (a special kind of user) can see emails of all users signed to a particular event.
+* Admin (a special kind of user) can see emails of all attendees.
 
 h3. Round 3
-# Two types of events: one-off (with a fixed date) and regular (day in week).
-# Users can sign at least one day before the event.
+* Two types of events: one-off (with a fixed date) and regular (day in week).
+* Users can sign at lhe very latest one day before the event.
+
+h3. Round 4
+* Regular events can repeat also every two weeks, not just weekly.
+* Admin can change every event.
+* When an event is changed, attendees are informed about these changes through email.
 
 In this repo, you can see results or all rounds. One directory per developer, directory's Readme worth reading.
 ( Czech: http://rails-forum.cz/t/ruby-sentiments/377 )
