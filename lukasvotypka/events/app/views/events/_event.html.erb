@@ -1,0 +1,21 @@
+<div id="event-<%= event.id %>" class="panel panel-default <%= 'active' if event_active?(event) %>">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= event.title %></h3>
+
+  </div>
+  <div class="panel-body">
+    <div class="col-sm-8">
+      Starts at: <%= l(event.start_time, format: :long) %> |
+      Ends at: <%= l(event.end_time, format: :long) %>
+      <p>
+        <%= event.text_description %>
+      </p>
+    </div>
+    <div class="col-sm-4 text-right">
+      <% if current_user %>
+        <%= link_to('Join', join_user_to_event_path(event), class: 'btn btn-success join', method: 'post', remote: true) %>
+        <%= link_to('Cancel', join_user_to_event_path(event), class: 'btn btn-danger cancel', method: 'post', remote: true) %>
+      <% end %>
+    </div>
+  </div>
+</div>

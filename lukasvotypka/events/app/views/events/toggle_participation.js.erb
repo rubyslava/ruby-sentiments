@@ -1,0 +1,5 @@
+<% if @active %>
+  $("#<%= "event-#{@event.id}" %>").addClass('active');
+<% else %>
+  $("#<%= "event-#{@event.id}" %>").removeClass('active');
+<% end %>

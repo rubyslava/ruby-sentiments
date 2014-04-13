@@ -1,0 +1,7 @@
+<div class="events">
+  <% @events.each do |event| %>
+    <%= cache_if(!current_user.nil?, cache_key_event_user(event, current_user), skip_digest: true) do %>
+      <%= render partial: 'event', locals: { event: event } %>
+    <% end %>
+  <% end %>
+</div>
