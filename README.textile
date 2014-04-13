@@ -1,17 +1,18 @@
-h1. Ruby Sentiments
+h1. What is "Ruby Sentiments"?
 
-This series of presentations is here to show how much the solution of a simple *web development* task programmed by *diverse developers* can differ.
+Ruby Sentiments is a series of programming presentations. It's here to show how much the solution of a simple *web development* task programmed by *diverse developers* can differ.
 
-As this can be really inspiring, we believe that the real fun comes, when the original task has to be extended or changed a lot or something unexpected has to be added :).
+As this can be really inspiring, we believe that the real fun comes, when the original task has to be extended or changed a lot. Or something really unexpected has to be added :-).
 
 h2. Rules
-# *Ruby* programmers (yes, this is Ruby only) individually work on given specification. 
+
+# *Ruby* programmers (yes, this is Ruby only) individually work on a given specification (see below). 
 # They push their *solution* of current round to this repo.
 # At the next *Ruby meeting*, they present their code to other devs. *WHY* such a code was written is very important, not just HOW it works.
 
 h2. Specification
 
-Lets build an "events calendar" app. Users will be able to sign to an event from a list. In details:
+The topic is *"events calendar"* app. Users will be able to sign to an event from a list. In details:
 
 h3. Round 1:
 * User can see list of events (name, description, date, from time, to time).
@@ -32,5 +33,7 @@ h3. Round 4
 * Admin can change every event.
 * When an event is changed, attendees are informed about these changes through email.
 
-In this repo, you can see results or all rounds. One directory per developer, directory's Readme worth reading.
-( Czech: http://rails-forum.cz/t/ruby-sentiments/377 )
+h2. What is this repo for?
+
+You can find here actual code from all developers. One directory per developer, directory's README (usually :-) ) worth reading.
+Want it Czech? Go to "Rails-Forum.cz":http://rails-forum.cz
