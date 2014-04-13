@@ -1,8 +1,8 @@
 h1. Ruby Sentiments
 
-This series of presentations is here to show how much the solution of a simple web development task programmed by diverse developers can differ.
+This series of presentations is here to show how much the solution of a simple *web development* task programmed by *diverse developers* can differ.
 
-And, the real fun comes, when the original task has to be extended or changed a lot or something unexpected has to be added :).
+As this can be really inspiring, we believe that the real fun comes, when the original task has to be extended or changed a lot or something unexpected has to be added :).
 
 h2. Rules
 # Ruby programmers (yes, this is Ruby only) individually work on given specification. 
@@ -11,8 +11,7 @@ h2. Rules
 
 h2. Specification
 
-The topic is something that every experienced web dev has probably met before.
-Its an "events calendar" website: each user can sign to an event from a list. Lets make it happen:
+Lets build an "events calendar" app. Users will be able to sign to an event from a list. In details:
 
 h3. Round 1:
 * User can see list of events (name, description, date, from time, to time).
