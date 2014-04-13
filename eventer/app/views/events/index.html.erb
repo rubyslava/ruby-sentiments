@@ -1,0 +1,12 @@
+<h1>Eventer</h1>
+<% if @events.any? %>
+<h2>All events</h2>
+<ul>
+  <% @events.each do |event| %>
+      <li>
+        <h3><%= event.name %><small><%= time_tag(event.happening_on) %></small></h3>
+        <p><%= event.description %></p>
+      </li>
+  <% end %>
+</ul>
+<% end %>
