@@ -5,9 +5,9 @@ This series of presentations is here to show how much the solution of a simple *
 As this can be really inspiring, we believe that the real fun comes, when the original task has to be extended or changed a lot or something unexpected has to be added :).
 
 h2. Rules
-# Ruby programmers (yes, this is Ruby only) individually work on given specification. 
-# They push their solution of current round to this repo.
-# At the next Ruby meeting, they present their code to other devs. WHY such a code was written is very important, not just HOW it works.
+# *Ruby* programmers (yes, this is Ruby only) individually work on given specification. 
+# They push their *solution* of current round to this repo.
+# At the next *Ruby meeting*, they present their code to other devs. *WHY* such a code was written is very important, not just HOW it works.
 
 h2. Specification
 
