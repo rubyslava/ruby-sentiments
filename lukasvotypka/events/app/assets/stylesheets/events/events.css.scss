@@ -1,0 +1,13 @@
+.events{
+  .cancel{
+    display: none;
+  }
+  .active{
+    .join{
+      display: none;
+    }
+    .cancel{
+      display: inline-block;
+    }
+  }
+}
