@@ -1,0 +1,13 @@
+<% css_class = going_to?(event) ? 'going' : 'not-going' %>
+<%= content_tag_for :tr, event, class: css_class do %>
+  <td>
+    <strong><%= event.name %></strong>
+    <% if going_to?(event) %>
+      <br />You are registered for this event!
+    <% end %>
+  </td>
+  <td><%= event.date %></td>
+  <td><%= time(event.from_time) %></td>
+  <td><%= time(event.to_time) %></td>
+  <td><%= button_to 'Join', event_registrations_path(event), class: 'btn btn-primary' %></td>
+<% end %>
