@@ -7,8 +7,14 @@ feature 'Events' do
     sign_in_as('bob@example.com', 'password')
 
     page.should have_content('Events list')
-    page.should have_content(events.first.name)
-    page.should have_content(events.first.description)
+    within(:xpath, '//table//tr[2]') do
+      page.should have_content(events.first.name)
+      page.should have_content(events.first.start_at.day)
+      page.should have_content(events.first.start_at.hour)
+      page.should have_content(events.first.end_at.day)
+      page.should have_content(events.first.end_at.hour)
+      page.should have_content(events.first.description)
+    end
   end
 
   scenario 'User can sign to attend any of those events.' do

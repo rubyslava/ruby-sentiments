@@ -1,0 +1,10 @@
+%tr
+  %td= event.name
+  %td= event.description
+  %td= short_datetime(event.start_at)
+  %td= short_datetime(event.end_at)
+  %td
+    - if event.attending?(current_user)
+      .button.alert.tiny.round attending
+    - else
+      = link_to('attend', event_attendances_path(event), data: {method: :post}, class: 'button tiny round success')
