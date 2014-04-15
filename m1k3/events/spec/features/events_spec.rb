@@ -21,13 +21,13 @@ feature 'Events' do
   end
 
   scenario 'User can visit this page later and still see his attendance.' do
-    #create(:event)
-    #sign_in_as('bob@example.com', 'password')
+    create(:event)
+    sign_in_as('bob@example.com', 'password')
 
-    #click_link 'attend'
+    click_link 'attend'
 
-    #sign_out
-    #sign_in_as('bob@example.com', 'password')
-    #page.should have_content 'attending'
+    sign_out
+    sign_in_as('bob@example.com', 'password')
+    page.should have_content 'attending'
   end
 end

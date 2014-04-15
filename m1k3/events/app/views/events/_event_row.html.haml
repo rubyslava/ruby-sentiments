@@ -3,4 +3,4 @@
   %td= event_row.description
   %td=l event_row.start_at
   %td= event_row.end_at.present? ? l(event_row.end_at) : 'n/a'
-  %td= current_user.attending?(event_row) ? link_to('attend', '#') : 'attending'
+  %td= event_row.attending?(current_user) ? 'attending' : link_to('attend', event_attendances_path(event_row), data: {method: :post})
