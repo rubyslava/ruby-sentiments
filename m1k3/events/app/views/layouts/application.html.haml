@@ -1,11 +1,17 @@
 !!!
-%html
+%html{lang: 'en'}
   %head
-    %title Ruby Sentiments - Events
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+
+    %title= content_for?(:title) ? yield(:title) : 'Ruby Sentiments - Events'
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'vendor/modernizr'
     = csrf_meta_tags
 
   %p.notice= notice
   %p.alert= alert
   = yield
+
+  = javascript_include_tag "application", 'data-turbolinks-track' => true

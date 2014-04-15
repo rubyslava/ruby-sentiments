@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+if Event.count == 0
+  42.times do |i|
+    Event.create!(name: "event #{i}", start_at: i.days.from_now)
+  end
+end
