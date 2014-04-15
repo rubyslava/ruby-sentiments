@@ -6,8 +6,9 @@ feature 'Events' do
 
     visit root_path
 
-    page.should have_css('.event', count: 42)
+    page.should have_content('Events list')
     page.should have_content(events.first.name)
+    page.should have_content(events.last.name)
   end
   scenario 'User can sign to attend any of those events.'
   scenario 'User can visit this page later and still see his attendance.'
