@@ -3,4 +3,4 @@
   %td= event_row.description
   %td=l event_row.start_at
   %td= event_row.end_at.present? ? l(event_row.end_at) : 'n/a'
-  %td Subscribe
+  %td= current_user.attending?(event_row) ? link_to('attend', '#') : 'attending'
