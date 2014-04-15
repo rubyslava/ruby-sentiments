@@ -1,0 +1,29 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+
+    %title= content_for?(:title) ? yield(:title) : 'Ruby Sentiments - Events'
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'vendor/modernizr'
+    = csrf_meta_tags
+
+  - if user_signed_in?
+    %nav.top-bar
+      %section.top-bar-section
+        %ul.right
+          %li
+            %a
+              Signed in as
+              = current_user.email
+          %li= link_to 'Sign out', destroy_user_session_path, data: { method: :delete }
+
+  - if notice
+    .alert-box.success= notice
+  - if alert
+    .alert-box.alert= alert
+  = yield
+
+  = javascript_include_tag "application", 'data-turbolinks-track' => true
