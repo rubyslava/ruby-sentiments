@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3><%= event.name %></h3>
+    <p><%= perex event.description %></p>
+    <p>
+      Date: <%= event.date %><br />
+      <%= "#{event.from_time} - #{event.to_time}" %>
+    </p>
+    <%= link_to t('event.show'), event_path(event), class: 'btn btn-default' %>
+  </div>
+</div>
