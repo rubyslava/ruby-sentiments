@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2><%= @event.name %></h2>
+    <p><%= @event.description %></p>
+  </div>
+  <div class="col-md-3 col-md-offset-1">
+    <h3><%= t('event.participants') %></h3>
+    <% if @event_manager.can_participate? %>
+        <%= link_to t('event.participate'), event_participate_path(@event), class: 'btn btn-default' %>
+    <% elsif @event_manager.participate? %>
+        <i><%= t('event.i_m_participate')%></i>
+        <p><%= link_to t('event.cancel_participation'), cancel_participate_path(@event), class: 'btn btn-danger' %></p>
+    <% else %>
+        <% if current_user.nil? %>
+            <%= link_to t('event.login'), new_user_session_path %>
+        <% else %>
+            <p><%= t('event.can_not_participate') %></p>
+        <% end %>
+    <% end %>
+    <ol>
+      <% @event.users.each do |participant| %>
+        <li><%= participant.email %></li>
+      <% end %>
+    </ol>
+  </div>
+</div>
