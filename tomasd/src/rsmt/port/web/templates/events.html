@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Participants</th>
+                    <th>My participation</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.name }}</td>
+                        <td>{{ event.description }}</td>
+                        <td>
+                            {% if event.start.date() == event.end.date() %}
+                                {{ event.start|date }}
+                                {{ event.start|time }} - {{ event.end|time }}
+                            {% else %}
+                                {{ event.start|datetime }} - {{ event.end|datetime }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ event.participants }}
+                        </td>
+                        <td>
+
+                            {% if event.attended_by_current_user %}
+                                I'm going
+                            {% else %}
+                                <form action="{{ url_for('event.participate', event_id=event.event_id) }}" method="post">
+                                    <input type="email" required="1" name="email" placeholder="Enter your email address"/>
+                                    <button>
+                                        Sign me up
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
