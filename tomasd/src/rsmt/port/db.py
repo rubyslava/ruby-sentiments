@@ -3,15 +3,16 @@ from rsmt.domain import EventRepository, UserRepository, Event, User, \
     EventListItem
 from rsmt.utils import cached_property
 import sqlalchemy as sa
-import sqlalchemy.orm
 from sqlalchemy.orm.scoping import scoped_session
 
 metadata = sa.MetaData()
 
 event_table = sa.Table(
     'events', metadata,
-    sa.Column('event_id', sa.Integer, sa.Sequence('events_event_id_seq'),
-              primary_key=True, autoincrement=True),
+    sa.Column(
+        'event_id', sa.Integer, sa.Sequence('events_event_id_seq'),
+        primary_key=True, autoincrement=True
+    ),
     sa.Column('name', sa.String),
     sa.Column('description', sa.String),
     sa.Column('start', sa.DateTime),
@@ -20,13 +21,24 @@ event_table = sa.Table(
 
 attendance_table = sa.Table(
     'event_attendance', metadata,
-    sa.Column('event_id', None, sa.ForeignKey('events.event_id', ondelete='CASCADE'), primary_key=True),
-    sa.Column('user_id', None, sa.ForeignKey('users.user_id', ondelete='CASCADE'), primary_key=True),
+    sa.Column(
+        'event_id', None,
+        sa.ForeignKey('events.event_id', ondelete='CASCADE'),
+        primary_key=True
+    ),
+    sa.Column(
+        'user_id', None,
+        sa.ForeignKey('users.user_id', ondelete='CASCADE'),
+        primary_key=True
+    )
 )
 
 user_table = sa.Table(
     'users', metadata,
-    sa.Column('user_id', sa.Integer, sa.Sequence('users_user_id_seq'), primary_key=True, autoincrement=True),
+    sa.Column(
+        'user_id', sa.Integer, sa.Sequence('users_user_id_seq'),
+        primary_key=True, autoincrement=True
+    ),
     sa.Column('email', sa.String, unique=True),
 )
 
@@ -37,6 +49,7 @@ sa.orm.mapper(
     }
 )
 sa.orm.mapper(User, user_table, column_prefix='_')
+
 
 class PgRepository:
     def __init__(self, session):
@@ -53,6 +66,7 @@ class PgRepository:
 class PgEventRepository(EventRepository, PgRepository):
     model = Event
     id_column = event_table.c.event_id
+
     def list_events(self, current_user):
         user_id = current_user.user_id if current_user else None
 
@@ -74,14 +88,16 @@ class PgEventRepository(EventRepository, PgRepository):
 
         query = query.outerjoin(attendance_table)
         query = query.group_by(event_table.c.event_id)
-        return [EventListItem(*row[:-1], attended_by_current_user=row[-1] > 0) for row in query.all()]
+        return [EventListItem(*row[:-1], attended_by_current_user=row[-1] > 0)
+                for row in query.all()]
 
     def read_event(self, event_id):
         return self._query.filter(event_table.c.event_id == event_id).first()
 
     def create_event(self, name, description, start, end):
         event = Event(
-            event_id=self._next_serial_id(), name=name, description=description, start=start, end=end
+            event_id=self._next_serial_id(), name=name, description=description,
+            start=start, end=end
         )
         self._session.add(event)
         return event

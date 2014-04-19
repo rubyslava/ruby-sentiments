@@ -36,7 +36,7 @@
                                 I'm going
                             {% else %}
                                 <form action="{{ url_for('event.participate', event_id=event.event_id) }}" method="post">
-                                    <input type="email" required="1" name="email"/>
+                                    <input type="email" required="1" name="email" placeholder="Enter your email address"/>
                                     <button>
                                         Sign me up
                                     </button>
