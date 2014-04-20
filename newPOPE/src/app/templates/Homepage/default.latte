@@ -1,0 +1,26 @@
+{block content}
+
+<h2>Your name: <strong>{$username}</strong></h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+  </thead>
+  <tr n:foreach="$events as $event">
+    <td>{$event->name}</td>
+    <td>{$event->description}</td>
+    <td>{$event->date->format("d.m.Y")}</td>
+    <td>{$event->from->format("%H:%I")}</td>
+    <td>{$event->to->format("%H:%I")}</td>
+    <td>
+      <a n:if="!$presenter->isUserAttendedTo($event->id)" n:href="Event:signIn $event->id">Sign in</a>
+      <span n:if="$presenter->isUserAttendedTo($event->id)">Signed!</span>
+    </td>
+  </tr>
+</table>
