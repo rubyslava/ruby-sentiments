@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+</head>
+<body>
+<h1>Events</h1>
+<div class="list">
+{% for event in object_list %}
+        <span>{{ event.date }}</span>
+        <span>{{ event.name }}</span>
+        <span>{{ event.description }}</span>
+        <span>{{ event.from_time }}</span>
+        <span>{{ event.to_time }}</span>
+{% empty %}
+    <span>No events available</span>
+{% endfor %}
+</div>
+
+</body>
+</html>
