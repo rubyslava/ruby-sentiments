@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  header.bar.bar-nav
+    h1.title Ruby sentiments #1
+
+  .content
+    .card
+      ul.table-view
+        for event in userEvents
+          li.table-view-cell.media
+            a(href="#")
+              img.media-object.pull-left(src="http://placehold.it/42x42")
+              .media-body
+                = event.get('name')
+                p= event.get('description')
