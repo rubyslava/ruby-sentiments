@@ -24,5 +24,5 @@ node_modules
 public/vendor
 
 ## Files to ignore
+public/index.html
 *.css
-*.js
