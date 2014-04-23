@@ -1,9 +1,16 @@
 Event = require '../models/event'
+User = require '../models/user'
 
 
 index = (req, res) ->
-  Event.collection().fetch().then (collection) ->
-    res.send(collection.toJSON())
+  userUuid = req.get('X-RS-user_uuid')
+  user = new User(uuid:userUuid)
+
+  user.fetch().then (result) ->
+    user.save() if !result
+
+    Event.collection().fetch().then (collection) ->
+      res.send(collection.toJSON())
 
 
 exports = module.exports = (app) ->
