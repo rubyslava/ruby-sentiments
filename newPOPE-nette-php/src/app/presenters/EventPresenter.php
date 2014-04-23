@@ -5,7 +5,7 @@ namespace App\Presenters;
 use App\Model\Events;
 use App\Model\SignedUser;
 
-class EventPresenter extends BasePresenter {
+class EventPresenter extends SecuredPresenter {
 
   /**
    * @var \App\Model\SignedUser
@@ -20,10 +20,6 @@ class EventPresenter extends BasePresenter {
   public $events;
 
   public function actionSignIn($id) {
-    if(!$this->signedUser->isSigned()) {
-      $this->redirect("Homepage:");
-    }
-
     $this->events->signUserTo(
       $this->signedUser->name,
       $id

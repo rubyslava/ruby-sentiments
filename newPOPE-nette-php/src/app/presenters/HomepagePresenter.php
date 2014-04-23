@@ -2,9 +2,7 @@
 
 namespace App\Presenters;
 
-use App\Model\Events;
-
-class HomepagePresenter extends BasePresenter {
+class HomepagePresenter extends SecuredPresenter {
 
   /**
    * @var \App\Model\SignedUser
@@ -19,10 +17,6 @@ class HomepagePresenter extends BasePresenter {
   public $events;
 
   public function renderDefault() {
-    if(!$this->signedUser->isSigned()) {
-      $this->redirect('Sign:in');
-    }
-
     $this->template->username = $this->signedUser->name;
     $this->template->events = $this->events->findPublic();
   }
