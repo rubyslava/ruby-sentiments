@@ -4,9 +4,4 @@ header.bar.bar-nav
 .content
   .card
     ul.table-view
-      li.table-view-cell.media(ng-repeat="event in events")
-        a(href="#")
-          img.media-object.pull-left(src="http://placehold.it/42x42")
-          .media-body
-            {{event.name}}
-            p {{event.description}}
+      event-box(event="event", ng-repeat="event in events")

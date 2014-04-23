@@ -1,0 +1,7 @@
+li.table-view-cell.media
+
+  date-indicator.pull-left.pointer(date="event.begin_time", ng-class="{faded:!event.attending}")
+  .media-body
+    {{event.name}}
+    p(ng-bind="event.description | characters:limit")
+    span.expand(ng-show="event.description.length > limit", ng-click="unlimit()") &hellip;
