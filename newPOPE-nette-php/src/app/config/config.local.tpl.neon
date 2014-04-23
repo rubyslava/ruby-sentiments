@@ -1,0 +1,10 @@
+parameters:
+
+
+nette:
+	database:
+		dsn: 'mysql:host=localhost;dbname=ruby-sentiments'
+		user: 
+		password: 
+		options:
+			lazy: yes
