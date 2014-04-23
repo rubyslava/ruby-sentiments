@@ -56,7 +56,7 @@ module.exports = (grunt) ->
 
     html2js:
       options:
-        base: "public/app"
+        base: "public"
         module: "rs.templates"
         htmlmin:
           collapseBooleanAttributes     : true
