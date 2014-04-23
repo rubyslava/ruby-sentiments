@@ -1,6 +1,6 @@
 angular.module('rs.events')
 
-.directive 'eventBox', () ->
+.directive 'eventBox', (EventsResource) ->
 
   return {
     restrict: 'EA'
@@ -16,5 +16,14 @@ angular.module('rs.events')
 
       scope.unlimit = ->
         scope.limit += 4000
+
+      scope.toggleAttend = (event) ->
+        event.attending = !event.attending
+        EventsResource.toggleAttend(id:event.id).$promise.then ->
+          # success cb
+          angular.noop()
+        , ->
+          # error cb
+          event.attending = !event.attending
 
   }

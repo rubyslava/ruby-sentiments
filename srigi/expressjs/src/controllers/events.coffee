@@ -1,5 +1,6 @@
 Event = require '../models/event'
 User = require '../models/user'
+EventUser = require '../models/eventUser'
 
 
 index = (req, res) ->
@@ -26,6 +27,27 @@ index = (req, res) ->
 
       res.send(result)
 
+toggleAttend = (req, res) ->
+  userUuid = req.get('X-RS-user_uuid')
+  eventId = req.params.id
+  user = new User(uuid:userUuid)
+
+  user.fetch().then (result) ->
+    return res.send(404) if !result
+
+    eventUser = new EventUser({ event_id:eventId, user_id:user.id })
+    eventUser.fetch().then (result) ->
+      if result
+        eventUser.query((qb) -> # Model cannot be destroyed without an idAttribute, create WHERE
+          qb.where('event_id', eventId)
+            .andWhere('user_id', user.id)
+        ).destroy()
+      else
+        eventUser.save()
+      res.send(200)
+
+
 
 exports = module.exports = (app) ->
   app.get("/events", index)
+  app.post("/events/:id/toggleAttend", toggleAttend)

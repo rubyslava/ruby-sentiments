@@ -1,6 +1,6 @@
 li.table-view-cell.media
 
-  date-indicator.pull-left.pointer(date="event.begin_time", ng-class="{faded:!event.attending}")
+  date-indicator.pull-left.pointer(date="event.begin_time", ng-class="{faded:!event.attending}", ng-click="toggleAttend(event)")
   .media-body
     {{event.name}}
     p(ng-bind="event.description | characters:limit")
