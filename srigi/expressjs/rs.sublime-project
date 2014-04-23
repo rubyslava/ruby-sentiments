@@ -1,0 +1,38 @@
+{
+
+  "folders": [
+    {
+      "path": ".",
+      "folder_exclude_patterns": [
+        ".sass-cache",
+        "public",
+        "src"
+      ],
+      "file_exclude_patterns": [
+        "*.sublime-workspace"
+      ]
+    },
+
+    {
+      "path": "src"
+    },
+
+    {
+      "path": "public",
+      "folder_exclude_patterns": [
+        "vendor"
+      ],
+      "file_exclude_patterns": [
+        "public/app/*.js",
+        "public/app/*.html",
+        "public/css/*.css",
+        "public/index.html"
+      ]
+    },
+
+    {
+      "path": "public/vendor"
+    }
+  ]
+
+}

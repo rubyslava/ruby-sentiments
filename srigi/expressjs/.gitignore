@@ -1,0 +1,28 @@
+## Numerous always-ignore items
+*.diff
+*.err
+*.log
+*.swp
+*.vi
+*~
+*.sass-cache
+
+## OS or Editor folders
+.DS_Store
+.cache
+.idea
+.project
+.settings
+.tmproj
+Thumbs.db
+desktop.ini
+nbproject
+*.sublime-workspace
+
+## Folders to ignore
+node_modules
+public/vendor
+
+## Files to ignore
+public/index.html
+*.css

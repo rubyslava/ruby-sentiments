@@ -1,0 +1,34 @@
+@import 'compass'
+@import 'mixins'
+
+
+.pointer
+  +pointer
+
+.expand
+  +pointer
+  background: #F0F8FF
+  color: #808080
+  display: block
+  font-size: 90%
+  font-weight: bold
+  line-height: 1
+  padding-bottom: 0.5em
+  text-align: center
+
+
+.date-indicator
+  background: #FFE4E1
+  margin-right: 0.75em
+  text-align: center
+  width: 48px
+  .faded &
+    +opacity(0.35)
+
+  .month
+    background: #ED143D
+    color: #F0FFFF
+  .day
+    font-size: 130%
+    font-weight: bold
+    padding: 0.15em 0
