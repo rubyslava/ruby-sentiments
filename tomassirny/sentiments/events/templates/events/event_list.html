@@ -44,6 +44,13 @@
                     <td>{{ event.description }}</td>
                     <td>{{ event.from_time }}</td>
                     <td>{{ event.to_time }}</td>
+                    <td>
+                        {% if event.attends == 0 %}
+                            <a href="/events/{{ event.id }}/">Join</a>
+                        {% else %}
+                            <span>Attending</span>
+                        {% endif %}
+                    </td>
                 </tr>
             {% empty %}
                 <tr>

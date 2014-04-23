@@ -12,6 +12,9 @@ class Event(models.Model):
     date = models.DateField()
     from_time = models.TimeField()
     to_time = models.TimeField()
+    attendees = models.ManyToManyField(
+        to=settings.AUTH_USER_MODEL, through='Attendance'
+    )
 
 
 class Attendance(models.Model):
