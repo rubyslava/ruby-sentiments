@@ -1,8 +1,8 @@
-# Django version of Ruby sentiments for Rubyslava/Pyvo meetup #
+# Django version of Ruby sentiments for Rubyslava/Pyvo meetup (Step 1)#
 
 ## Installation ##
 
-This quick how-to expects existence of virtual environment
+This quick how-to expects existence of virtual environment (virtualenv)
 
 * Download repo
 ```sh
@@ -13,15 +13,19 @@ git clone <url>
 ```shell
 cd ruby-sentiments/tomassirny
 pip install -U -r requirements.txt
+cd sentiments
 ```
 
-* Change settings (sentiments/sentiments/settings.py) if needed, working SQLite3 database is included
+* Change settings (sentiments/sentiments/settings.py) if needed, (but working SQLite3 database is included)
+in that case run this command first
+```sh
+./manage.py syncdb
+```
 
 ## Running ##
 
 * Start webserver
 ```sh
-cd sentiments
 ./manage.py runserver 8011
 ```
 
@@ -43,8 +47,8 @@ contains all code needed - models, views, html templates.
 
 ### Models ###
 I chose 3 models for representing this domain - _Event_, _User_ (Django's native)
-and _Attendance_. Attendance model works as joining table (_through_ field in Event model)
-- maps many-to-many relation between events and users. It can contain other attributes
+and _Attendance_. Attendance model works as joining table (_through_ field in Event model) - maps
+many-to-many relation between events and users. It can contain other attributes
 for this relation, e.g. status ('Going', 'Maybe', etc.).
 To have this possibility from beginning, I created this model explicitly,
 although Django can do it internally.
