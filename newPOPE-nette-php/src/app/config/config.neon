@@ -23,7 +23,6 @@ nette:
 
 
 services:
-	- App\Model\UserManager
 	- App\RouterFactory
 	- App\Model\SignedUser(@session::getSection('signedUser'))
 	- App\Model\Events
