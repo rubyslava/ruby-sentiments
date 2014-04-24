@@ -1,0 +1,3 @@
+class EventBase < ActiveRecordPersistenceBase
+end
+

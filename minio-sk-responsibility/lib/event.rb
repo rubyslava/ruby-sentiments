@@ -15,11 +15,19 @@ class Event
     @attendees = attendees
   end
 
-  def register_attendee(attendee)
-    Event.new(attributes, @attendees + [attendee])
+  def register_attendee(attendee, listener)
+    if can_be_attended_by?(attendee)
+      listener.attendance_added(Event.new(attributes, @attendees + [attendee]))
+    else
+      listener.attendance_not_allowed(self)
+    end
   end
 
   def attended_by?(attendee)
     @attendees.include?(attendee)
+  end
+
+  def can_be_attended_by?(attendee)
+    !attended_by?(attendee)
   end
 end

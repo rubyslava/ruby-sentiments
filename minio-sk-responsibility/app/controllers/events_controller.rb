@@ -4,8 +4,16 @@ class EventsController < ApplicationController
   end
 
   def attend
-    event = meetup_service.register_attendee(current_event, current_attendee)
+    meetup_service.register_attendee(current_event, current_attendee, self)
+  end
+
+  def attendance_added(event)
     event_storage.save_event(event)
+    redirect_to action: :index
+  end
+
+  def attendance_not_allowed(event)
+    flash[:alert] = 'Could not add you to event'
     redirect_to action: :index
   end
 
