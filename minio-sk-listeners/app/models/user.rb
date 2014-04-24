@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   has_many :attending_events, through: :attendances, source: :event
 
   def attend(event)
-    attendances.build(user: self, event: event)
+    # attendances.build(user: self, event: event)
+    event.attendances.build(event: event, user: self)
   end
 
   def signed_in?

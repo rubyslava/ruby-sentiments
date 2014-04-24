@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :attendances
+  has_many :attendances, autosave: true
   has_many :attending_users, through: :attendances, source: :user
 
   def attended_by?(user)
