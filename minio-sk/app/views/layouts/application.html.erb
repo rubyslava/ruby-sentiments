@@ -9,7 +9,7 @@
 <body>
 
 <p>
-  <% unless user_signed_in? %>
+  <% unless current_user.signed_in? %>
       <%= link_to 'Sign up', new_user_registration_path %>
       <%= link_to 'Sign in', new_user_session_path %>
   <% else %>
