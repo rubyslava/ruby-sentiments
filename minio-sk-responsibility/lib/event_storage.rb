@@ -17,7 +17,7 @@ class EventStorage
       ar_event = @e.find(event.id)
       ar_event.attributes = event.attributes
       event.attendees.each do |attendee|
-        unless ar_event.attendances.include?(attendee.id)
+        unless ar_event.attendances.map(&:user_id).include?(attendee.id)
           ar_event.attendances.build(user: @u.find(attendee.id), event: ar_event)
         end
       end
