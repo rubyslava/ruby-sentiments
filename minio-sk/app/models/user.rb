@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   def attend(event)
     attendances.build(user: self, event: event)
   end
+
+  def signed_in?
+    true
+  end
 end
