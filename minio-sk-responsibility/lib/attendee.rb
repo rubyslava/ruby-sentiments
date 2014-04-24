@@ -1,10 +1,7 @@
 class Attendee
+  include Virtus.model
   include Equalizer.new(:id)
 
-  attr_reader :id, :email
-
-  def initialize(attributes)
-    @id = attributes["id"]
-    @email = attributes["email"]
-  end
+  attribute :id, Integer
+  attribute :email, String
 end
