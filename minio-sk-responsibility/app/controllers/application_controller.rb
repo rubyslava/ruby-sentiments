@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def meetup_service
-    @meetup_servce ||= MeetupService.new
+    @meetup_service ||= MeetupService.new
   end
 end
