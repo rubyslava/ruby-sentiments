@@ -1,0 +1,36 @@
+<h1>All events</h1>
+
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Happening On</th>
+      <th>Starts At</th>
+      <th>Finished At</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @events.each do |event| %>
+    <tr>
+      <td>
+        <% if event.attended_by?(current_attendee) %>
+          <span class="label label-primary">Going</span>
+        <% end %>
+      </td>
+      <td><%= event.name %></td>
+      <td><%= event.description %></td>
+      <td><%= time_tag event.date %></td>
+      <td><%= time_tag event.from if event.from %></td>
+      <td><%= time_tag event.to if event.to %></td>
+      <td>
+        <% if user_signed_in? %>
+          <%= link_to 'Attend', attend_event_path(event.id), method: :post %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
