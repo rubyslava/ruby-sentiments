@@ -1,0 +1,10 @@
+<tr>
+  <td><%= event.name %></td>
+  <td><%= event.description %></td>
+  <td><%= event.scheduled_on %></td>
+  <td><%= event.beginning_at %></td>
+  <td><%= event.ending_at %></td>
+  <% unless current_user.is_attending?(event) %>
+      <td><%= link_to 'Join', add_attendee_event_path(event), method: :post  %></td>
+  <% end %>
+</tr>
