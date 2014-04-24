@@ -1,4 +1,4 @@
-== 'Tell, do not wait to be asked' approach based on EventBus
+# 'Tell, do not wait to be asked' approach based on EventBus
 
 This approach is rather classical, it uses Postgres as backend, three linked models (Event, User and
 Attendance). RSpec with Capybara and FactoryGirl are used for tests.
